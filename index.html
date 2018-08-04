@@ -1,0 +1,49 @@
+<! DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>tree</title>
+		<link rel="stylesheet" href="src/client/styles/app.css">
+		<link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.css"
+	</head>
+
+	<body id='app-body'>
+		<div>
+			Yo
+			<div class = "tree">
+				<div class = "tree-root-node">
+					<i class = "far fa-minus-square tree-gate" onclick="clickGate(event)"></i><span class = "tree-item">root</span>
+					<div class = "tree-node"
+						style = "margin-left: 10px;">
+						<i class = "tree-empty-gate"></i><span class = "tree-item">item</span>
+					</div>
+					<div class = "tree-node"
+						style = "margin-left: 10px;">
+						<i class = "tree-empty-gate"></i><span class = "tree-item">item</span>
+					</div>
+				</div>
+				<div class = "tree-root-node">
+					<i class = "far fa-minus-square tree-gate" onclick="clickGate(event)"></i><span class = "tree-item">root</span>
+					<div class = "tree-node"
+						style = "margin-left: 10px;">
+						<i class = "far fa-minus-square tree-gate" onclick="clickGate(event)"></i><span class = "tree-item">item</span>
+						<div class = "tree-node"
+							style = "margin-left: 10px;">
+							<i class = "tree-empty-gate"></i><span class = "tree-item">item</span>
+						</div>
+					</div>
+					<div class = "tree-node"
+						style = "margin-left: 10px;">
+						<i class = "tree-empty-gate"></i><span class = "tree-item">item</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="src/client/starting-nodes.js"></script>
+		<script src="src/client/tree.js"></script>
+		<script>
+			displayTree();
+		</script>
+	</body>
+</html>
+

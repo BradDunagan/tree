@@ -1,0 +1,61 @@
+
+html {
+	height: 		100%;
+}
+
+body {
+	margin: 		0px;
+	height: 		100%;			
+	font-family: 	Verdana;  
+	font-size: 		10pt;	
+}
+
+body > div {
+	display: 		flex;			/*	to be rid of the small space at bottom 						*/
+	border:			0px solid red;
+	height: 		100%;
+}
+
+.tree {
+	margin: 		10px;
+	border:			solid 1px black;
+	width: 			400px;
+	padding-top:	10px;
+}
+
+.tree-gate {
+	margin-left:	4px;	
+}
+
+.tree-empty-gate {
+	margin-left: 	16px;
+}
+
+.tree-header {
+	margin-top: 		5px;
+	margin-left: 		21px;
+	display:			flex;
+	flex-direction:		row;
+	justify-content: 	space-between;
+	width: 				300px;
+	border-bottom:		solid 1px lightgray;
+}
+
+.tree-column {
+	flex: 				1 1 auto;
+	font-weight:		bold;
+}
+
+.tree-item {
+	margin-left:	5px;
+}
+
+.tree-root-node {
+	padding-left:	10px;
+}
+
+.tree-node {
+	border-left: 	solid 1px lightgray;
+	margin-left: 	10px;
+	padding-left:	10px;
+}

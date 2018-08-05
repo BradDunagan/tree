@@ -1,5 +1,5 @@
 /*
-         1         2         3         4         5         6         7         8
+		 1         2         3         4         5         6         7         8
 12345678901234567890123456789012345678901234567890123456789012345678901234567890
 
 	starting-nodes.js
@@ -9,18 +9,29 @@ let startingNodes = {
 	'1': {
 		parent: null,
 		gate: 'expanded',
-		text: 'root',
+		text: 'Local Types',
 		children: {
+			'header': [
+				{ text: 'Name',
+				  minWidth: '40px',
+				  maxWidth: '120px' },
+				{ text: 'Created By',
+				  minWidth: '40px',
+				  maxWidth: '120px' },
+				{ text: 'Created In',
+				  minWidth: '40px',
+				  maxWidth: '120px' },
+			],
 			'2': {
 				parent: '1',
 				gate: 'hidden',
-				text: 'item 1',
+				text: ['Type_1', 'Alfonso Smith', 'Ride It'],
 				children: {}
 			},
 			'3': {
 				parent: '1',
 				gate: 'hidden',
-				text: 'item 3',
+				text: ['Type_3', 'Jane Jackson', 'Medical'],
 				children: {}
 			},
 		}
@@ -28,34 +39,45 @@ let startingNodes = {
 	'4': {
 		parent: null,
 		gate: 'expanded',
-		text: 'root',
+		text: 'Share Types',
 		children: {
+			'header': [
+				{ text: 'Name',
+				  minWidth: '40px',
+				  maxWidth: '120px' },
+				{ text: 'Created By',
+				  minWidth: '40px',
+				  maxWidth: '120px' },
+				{ text: 'Created In',
+				  minWidth: '40px',
+				  maxWidth: '120px' },
+			],
 			'5': {
 				parent: '4',
 				gate: 'hidden',
-				text: 'item 5',
-                header: [
-                    { text: 'col-0',
-                      minWidth: '40px',
-                      maxWidth: '120px' },
-                    { text: 'col-1',
-                      minWidth: '40px',
-                      maxWidth: '120px' },
-                    { text: 'col-2',
-                      minWidth: '40px',
-                      maxWidth: '120px' },
-                ],
+				text: ['Type_5', 'Waldo', 'Metal Fab'],
 				children: {}
 			},
 			'6': {
 				parent: '4',
 				gate: 'expanded',
-				text: 'item 6',
+				text: ['Type_6', 'Roberto', 'Space'],
 				children: {
+					'header': [
+						{ text: 'Name',
+						  minWidth: '40px',
+						  maxWidth: '120px' },
+						{ text: 'Created By',
+						  minWidth: '40px',
+						  maxWidth: '120px' },
+						{ text: 'Created In',
+						  minWidth: '40px',
+						  maxWidth: '120px' },
+					],
 					'7': {
 						parent: '6',
 						gate: 'hidden',
-						text: 'item 7',
+						text: ['Type_7', 'Ralph', 'Mega 3'],
 						children: {}
 					}
 				}
@@ -63,7 +85,7 @@ let startingNodes = {
 			'8': {
 				parent: '4',
 				gate: 'hidden',
-				text: 'item 8',
+				text: ['Type_8', 'Brad Dunagan', 'Basics'],
 				children: {}
 			},
 		},

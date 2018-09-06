@@ -4,39 +4,20 @@
 		<meta charset="UTF-8">
 		<title>tree</title>
 		<link rel="stylesheet" href="src/client/styles/app.css">
+		<link rel="stylesheet" href="src/client/styles/tree.css">
 		<link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.css"
 	</head>
 
 	<body id='app-body'>
 		<div>
 			Yo
-			<div class = "tree">
-				<div class = "tree-root-node">
-					<i class = "far fa-minus-square tree-gate" onclick="clickGate(event)"></i><span class = "tree-item">root</span>
-					<div class = "tree-node"
-						style = "margin-left: 10px;">
-						<i class = "tree-empty-gate"></i><span class = "tree-item">item</span>
-					</div>
-					<div class = "tree-node"
-						style = "margin-left: 10px;">
-						<i class = "tree-empty-gate"></i><span class = "tree-item">item</span>
-					</div>
-				</div>
-				<div class = "tree-root-node">
-					<i class = "far fa-minus-square tree-gate" onclick="clickGate(event)"></i><span class = "tree-item">root</span>
-					<div class = "tree-node"
-						style = "margin-left: 10px;">
-						<i class = "far fa-minus-square tree-gate" onclick="clickGate(event)"></i><span class = "tree-item">item</span>
-						<div class = "tree-node"
-							style = "margin-left: 10px;">
-							<i class = "tree-empty-gate"></i><span class = "tree-item">item</span>
-						</div>
-					</div>
-					<div class = "tree-node"
-						style = "margin-left: 10px;">
-						<i class = "tree-empty-gate"></i><span class = "tree-item">item</span>
-					</div>
-				</div>
+			<div id = 'tree-ele' class = "tree">
+			</div>
+			<div id = 'master-control-ele' class = 'master-control'>
+				<button class = 'not-ugly-button'
+						onclick = 'addListItem(event)'>Add Record</button>
+			</div>
+			<div id = 'list-ele' class = "list">
 			</div>
 			<div class = "inline">
 				<div class = "inline-item">
@@ -50,11 +31,139 @@
 				</div>
 			</div>
 		</div>
-		<script src="src/client/starting-nodes.js"></script>
-		<script src="src/client/tree.js"></script>
-		<script>
-			displayTree();
-		</script>
+<script src="src/client/starting-nodes.js"></script>
+<script src="src/client/starting-nodes-2.js"></script>
+<script src="src/client/tree.js"></script>
+<script>
+	function typeTree() {
+		function clickItem() {
+		}
+		let treeOptions = {
+			bLocalNode:			false,
+			bShareNode:			false,
+			bCreatedByNodes:	false,
+			bCreatedByColumn:	true,
+			bCreatedInColumn:	true,
+			bHideRootNode:		true,	//	only possible when one root node
+			bAsList:			false };
+		let treeInst = tree2.newTree ( treeOptions );
+		treeInst.setOnClickItem ( clickItem );
+		let ttEle = document.getElementById ( 'tree-ele' );
+		treeInst.displayTree ( ttEle, startingNodes );
+	}	//	typeTree()
+
+	let listInst 		= null;
+	let listEle 		= null;
+	let listRoot 		= null;
+	let hNewListItem 	= 0;
+
+	function addListItem ( evt, text ) {
+		console.log ( 'addListItem()' );
+		let hItem = listInst.tt_insertItem ( {
+			hParent:	listRoot.handle,
+			text: 		text ? text : 'new-record-name' } );
+		listInst.tt_setItemData ( {
+			hItem: 		hItem,
+			pD:			0,
+			json: 		JSON.stringify ( 
+				text ? { tag: 	'list-item' }
+					 : { tag: 	'list-item',
+						 bEdit:	true,       } ) } );
+		listInst.displayTree ( listEle );
+		let nodeEle = listInst.getNodeElement ( hItem );
+		if ( text || ! nodeEle ) {
+			return; }
+		let input = nodeEle.getElementsByTagName ( 'input' )[0];
+		if ( input ) {
+			input.focus(); }
+		hNewListItem = hItem;
+	}
+
+	function recordList() {
+		function load ( o ) {
+			const sW = 'recodList() load()';
+			console.log ( sW + ' top' );
+			let hRoot = 0;
+			function nodeInserted ( a, handle, node ) {
+				if ( a.text === ']root node[' ) {
+					listRoot = { handle: handle, node: node };
+					return;
+				}
+			}   //  nodeInserted()
+			function irCB ( sCmd, a ) {
+				let hItem = listInst.tt_insertItem ( {
+					hParent:	hRoot,
+					text: 		a.recName } );
+				listInst.tt_setItemData ( {
+					hItem: 		hItem,
+					pD:			0,
+					json: 		JSON.stringify ( { tag: 	'list-item',
+												   recId: 	a.recId } ) } );
+			}
+			listInst.clearTree();
+			listInst.setInsertItemCallback ( nodeInserted );
+			hRoot = listInst.tt_insertItem ( {
+				hParent: 	tree2.TVI_ROOT,
+				text: 		']root node[',
+			} );
+			listInst.tt_setItemData ( {
+				hItem: 		hRoot,
+				pD:			0,
+				json: 		JSON.stringify ( { tag: 'root-type' } )
+			} );
+			let names = ['Irwin', 'Thurman'];
+			for ( let i = 0; i < names.length; i++ ) {
+				irCB ( '', { recName: names[i], recId: 0 } ) }
+			listInst.displayTree ( listEle );
+			listInst.expand ( listRoot.node, hRoot );
+		}	//	load()
+
+		function clickItem() {
+		}
+		function inputItem ( o ) {
+			const sW = 'recordList() inputItem()'
+			console.log ( sW + ' ' + o.do );
+			if ( ! hNewListItem ) {
+				return; }
+			if ( 	(o.do === 'escape')
+				 ||	(o.do === 'blur')   ) {
+				if ( ! hNewListItem ) {
+					return; }
+				let hItem = hNewListItem;
+				hNewListItem = 0;
+				if ( ! listInst.tt_deleteItem ( { hItem: hItem } ) ) {
+					console.log ( sW + ' ERROR: failed to delete node' ); }
+				return;
+			}
+			if ( o.do === 'enter' ) {
+				console.log ( o.text );
+				let hItem = hNewListItem;
+				hNewListItem = 0;
+				if ( ! listInst.tt_deleteItem ( { hItem: hItem } ) ) {
+					console.log ( sW + ' ERROR: failed to delete node' ); }
+				addListItem ( null, o.text );
+				return; }
+		}
+		let treeOptions = {
+			bLocalNode:			false,
+			bShareNode:			false,
+			bCreatedByNodes:	false,
+			bCreatedByColumn:	true,
+			bCreatedInColumn:	true,
+			bHideRootNode:		true,	//	only possible when one root node
+			bAsList:			true };
+		listInst = tree2.newTree ( treeOptions );
+		listInst.setOnClickItem ( clickItem );
+		listInst.setOnInput ( inputItem );
+		listEle = document.getElementById ( 'list-ele' );
+	//	hListRoot = listInst.displayTree ( listEle, startingNodes2 )[0];
+		load();
+	}	//	recordList()
+
+	typeTree();
+
+	recordList();
+</script>
 	</body>
 </html>
 

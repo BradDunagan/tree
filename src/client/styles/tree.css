@@ -1,0 +1,154 @@
+/*
+         1         2         3         4         5         6         7         8
+12345678901234567890123456789012345678901234567890123456789012345678901234567890
+
+	tree.js
+
+	Initially developed in -
+		D:\dign\OT\tree\tree-a
+	and pushed to -
+		https://github.com/BradDunagan/tree-a
+*/
+
+/*
+.tree {
+	margin: 		10px;
+	border:			solid 1px black;
+	width: 			400px;
+	height: 		300px;
+	padding-top:	10px;
+}
+*/
+
+.tree-gate {
+	margin-left:	5px;
+	margin-right: 	5px;
+}
+
+.tree-gate-2 {
+	display: 		table-cell !important;
+	padding: 		7px 5px 0px 5px;
+}
+
+.tree-empty-gate {
+	display: 		table-cell !important;
+	margin-left: 	16px;
+}
+
+.tree-table-header {
+	margin-left: 		21px;
+	font-size: 			10px;
+	font-weight:		bold;
+/*	display:			flex;						*/
+/*	flex-direction:		row;						*/
+/*	justify-content: 	space-between;				*/
+	width: 				300px;
+}
+
+.tree-table-row {
+	margin-left: 		21px;
+	width: 				300px;
+}
+
+.tree-table-row-in-list {
+	width: 				300px;
+}
+
+.tree-table-gated-row {
+/*	display:			flex;						*/
+/*	flex-direction:		row;						*/
+/*	justify-content: 	space-between;				*/
+	width: 				312px;
+}
+
+.tree-column {
+/*	flex: 				1 1 auto;					*/
+	display:			table-cell;
+	padding-top:		5px;
+	width: 				95px;
+	border-bottom:		solid 1px lightgray;
+}
+.tree-column:nth-child(1n+2) {
+/*	flex: 				1 1 auto;					*/
+	display:			table-cell;
+	border-left: 		solid 1px lightgray;
+	padding-left: 		2px;
+}
+
+.tree-table-row > .tree-column:first-child {
+	color: 				blue;
+	cursor: 			pointer;
+}
+
+.tree-gated-column {
+/*	flex: 				1 1 auto;					*/
+	display:			table-cell;
+	padding-top:		5px;
+	width: 				95px;
+	border-bottom:		solid 1px lightgray;
+}
+.tree-table-gated-row > .tree-gated-column:nth-child(1n+3) {
+/*	flex: 				1 1 auto;					*/
+	display:			table-cell;
+	border-left: 		solid 1px lightgray;
+	padding-left: 		2px;
+}
+
+/*
+.tree-item {
+	margin-left:		5px;
+}
+*/
+
+.tree-root-node {
+	padding-left:		10px;
+	font-size:			12px;
+	font-weight:		bold;
+}
+
+.tree-no-display {
+/*	Option bHideRootNode is true - see rr file TypeTreeOptions.h. 			*/
+	display: 			none !important;
+}
+
+.tree-node {
+	border-left: 		solid 1px lightgray;
+	margin-left: 		10px;
+	padding-left:		10px;
+	font-size:			12px;
+	font-weight:		normal;
+}
+
+.tree-root-node:not(:last-child) > .tree-node:last-child {
+	padding-bottom:		10px;
+}
+
+.tree-node-no-display-parent {
+/*	Just showing first types of a root type and their children. I.e, a
+	simple tree with one root type, no local - vs - share types, the only
+	nodes of the tree are those of selectable types. Option bHideRootNode
+	is true - see comments in rr file TypeTreeOptions.h.					*/
+	font-size:			12px;
+	font-weight:		normal;
+    padding-bottom:     2px;
+}
+
+.tree-root-node:not(:last-child) > .tree-node-no-display-parent:last-child {
+	padding-bottom:		10px;
+}
+
+.tree-node-in-list {
+	font-size:			12px;
+	font-weight:		normal;
+}
+
+.tree-root-node:not(:last-child) > .tree-node-in-list:last-child {
+	padding-bottom:		10px;
+}
+
+.tree-input {
+    border-style:       none;
+    padding-left:       2px;
+    padding-top:        0px;
+    padding-bottom:     0px;
+}

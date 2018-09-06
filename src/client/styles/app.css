@@ -21,105 +21,34 @@ body > div {
 	margin: 		10px;
 	border:			solid 1px black;
 	width: 			400px;
-	height: 		300px;
+	height: 		240px;
 	padding-top:	10px;
 }
 
-.tree-gate {
-	margin-left:	5px;	
+.master-control {
+	margin: 		10px;
+	border:			solid 0.5px black;
+	width: 			400px;
+	height: 		 30px;
+	padding-top:	10px;
 }
 
-.tree-gate-2 {
-	display: 		table-cell !important;
-	padding: 		7px 6px 0px 5px;
+.list {
+	margin: 		10px;
+	border:			solid 1px black;
+	width: 			400px;
+	height: 		 80px;
+	padding-top:	10px;
+	overflow-y:		auto;
 }
 
-.tree-empty-gate {
-	margin-left: 	16px;
-}
-
-.tree-table-header {
-	margin-top: 		5px;
-	margin-left: 		21px;
-	font-size: 			10px;
-	font-weight:		bold;
-/*	display:			flex;						*/
-/*	flex-direction:		row;						*/
-/*	justify-content: 	space-between;				*/
-	width: 				300px;
-}
-
-.tree-table-row {
-	margin-left: 		21px;
-/*	display:			flex;						*/
-/*	flex-direction:		row;						*/
-/*	justify-content: 	space-between;				*/
-	width: 				300px;
-}
-
-.tree-table-gated-row {
-/*	display:			flex;						*/
-/*	flex-direction:		row;						*/
-/*	justify-content: 	space-between;				*/
-	width: 				312px;
-}
-
-.tree-column {
-/*	flex: 				1 1 auto;					*/
-	display:			table-cell;
-	padding-top:		5px;
-	width: 				95px;
-	border-bottom:		solid 1px lightgray;
-}
-.tree-column:nth-child(1n+2) {
-/*	flex: 				1 1 auto;					*/
-	display:			table-cell;
-	border-left: 		solid 1px lightgray;
-	padding-left: 		2px;
-}
-
-.tree-gated-column {
-/*	flex: 				1 1 auto;					*/
-	display:			table-cell;
-	padding-top:		5px;
-	width: 				95px;
-	border-bottom:		solid 1px lightgray;
-}
-.tree-table-gated-row > .tree-gated-column:nth-child(1n+3) {
-/*	flex: 				1 1 auto;					*/
-	display:			table-cell;
-	border-left: 		solid 1px lightgray;
-	padding-left: 		2px;
-}
-
-.tree-item {
-	margin-left:	5px;
-}
-
-.tree-root-node {
-	padding-left:		10px;
-	font-size:		12px;
-	font-weight:	bold;
-}
-
-.tree-root-node:not(:last-child) > .tree-node:last-child {
-	padding-bottom:		10px;
-}
-
-.tree-node {
-	border-left: 	solid 1px lightgray;
-	margin-left: 	10px;
-	padding-left:	10px;
-	font-size:		12px;
-	font-weight:	normal;
-}
 
 
 .inline {
 	margin: 		10px;
 	border:			solid 1px black;
 	width: 			400px;
-	height: 		200px;
+	height: 		40px;
 }
 
 .inline-item {
@@ -128,4 +57,15 @@ body > div {
 	width: 			80px;
 	height: 		14px;
 	padding-top:	5px;
+}
+
+.not-ugly-button {
+	background-color: 	white;
+	border-style: 		solid;
+	border-width: 		1px;
+	margin-left: 		10px;
+	padding-left:		10px;
+	padding-right:		10px;
+	padding-top:		2px;
+	font-size:			12px;
 }
